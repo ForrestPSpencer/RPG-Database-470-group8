@@ -6,8 +6,19 @@ Generate Data - Opp
 -boss names
 
 Create Scheme - Derrick
-Apply Constraints - Derrick 
--appearance table
+-appearance table DONE
+-location DONE
+-player DONE
+-inventory DONE
+-boss
+-enemy
+-shop
+-quest
+-armor
+-weapon
+-item
 
-Create Views - 
-Create Quearies - 
+Apply Constraints -  
+
+
+Create Views - Derrick
