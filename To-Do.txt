@@ -14,9 +14,9 @@ Create Scheme - Derrick
 -enemy
 -shop
 -quest
--armor
+-armor DONE
 -weapon
--item
+-item DONE
 
 Apply Constraints -  
 

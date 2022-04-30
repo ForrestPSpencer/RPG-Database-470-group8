@@ -102,3 +102,60 @@ CREATE TABLE `mobilerpg`.`armor` (
   `sell_value` DECIMAL(16,2) NOT NULL,
   PRIMARY KEY (`armor_id`),
   UNIQUE INDEX `armor_id_UNIQUE` (`armor_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD INDEX `armor_id_idx` (`armor_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD CONSTRAINT `armor_id`
+  FOREIGN KEY (`armor_id`)
+  REFERENCES `mobilerpg`.`armor` (`armor_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+CREATE TABLE `mobilerpg`.`item` (
+  `item_id` INT NOT NULL,
+  `item_name` VARCHAR(15) NULL,
+  `sell_value` DECIMAL(16,2) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`item_id`),
+  UNIQUE INDEX `item_id_UNIQUE` (`item_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD CONSTRAINT `item_1`
+  FOREIGN KEY (`item_1`)
+  REFERENCES `mobilerpg`.`item` (`item_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD INDEX `item_2_idx` (`item_2` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD CONSTRAINT `item_2`
+  FOREIGN KEY (`item_2`)
+  REFERENCES `mobilerpg`.`item` (`item_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD INDEX `item_3_idx` (`item_3` ASC) VISIBLE,
+ADD INDEX `item_4_idx` (`item_4` ASC) VISIBLE,
+ADD INDEX `item_5_idx` (`item_5` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD CONSTRAINT `item_3`
+  FOREIGN KEY (`item_3`)
+  REFERENCES `mobilerpg`.`item` (`item_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `item_4`
+  FOREIGN KEY (`item_4`)
+  REFERENCES `mobilerpg`.`item` (`item_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `item_5`
+  FOREIGN KEY (`item_5`)
+  REFERENCES `mobilerpg`.`item` (`item_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
