@@ -14,7 +14,7 @@ Create Scheme - Derrick
 -enemy DONE
 -shop DONE
 -quest
--npc
+-npc DONE
 -armor DONE
 -weapon DONE
 -item DONE

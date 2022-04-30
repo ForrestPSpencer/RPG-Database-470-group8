@@ -243,3 +243,21 @@ ADD CONSTRAINT `shop_id`
   REFERENCES `mobilerpg`.`shop` (`shop_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+CREATE TABLE `mobilerpg`.`npcs` (
+  `npcs_id` INT NOT NULL,
+  `npcs_name` VARCHAR(15) NULL,
+  `speech_bubble` VARCHAR(35) NULL,
+  `quest_id` INT NULL,
+  PRIMARY KEY (`npcs_id`),
+  UNIQUE INDEX `npcs_id_UNIQUE` (`npcs_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`shop` 
+ADD INDEX `npcs_id_idx` (`npcs_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`shop` 
+ADD CONSTRAINT `npcs_id`
+  FOREIGN KEY (`npcs_id`)
+  REFERENCES `mobilerpg`.`npcs` (`npcs_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
