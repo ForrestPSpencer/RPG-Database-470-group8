@@ -1,5 +1,5 @@
 Generate Data - Opp
--armor names (leg,head torso
+-armor names (leg,head torso)
 -enemy names
 -weapon names
 -Quest names
@@ -10,7 +10,7 @@ Create Scheme - Derrick
 -location DONE
 -player DONE
 -inventory DONE
--boss
+-boss DONE
 -enemy
 -shop
 -quest

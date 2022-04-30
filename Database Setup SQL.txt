@@ -33,6 +33,7 @@ CREATE TABLE `mobilerpg`.`inventory` (
   UNIQUE INDEX `inventory_id_UNIQUE` (`inventory_id` ASC) VISIBLE,
   UNIQUE INDEX `player_id_UNIQUE` (`player_id` ASC) VISIBLE);
 
+
 ALTER TABLE `mobilerpg`.`inventory` 
 ADD CONSTRAINT `player_id`
   FOREIGN KEY (`player_id`)
@@ -179,4 +180,25 @@ ADD CONSTRAINT `weapon_id`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+CREATE TABLE `mobilerpg`.`boss` (
+  `boss_id` INT NOT NULL,
+  `boss_name` VARCHAR(10) NULL,
+  `currency_value` INT NULL,
+  `HP` FLOAT NOT NULL DEFAULT 100,
+  `weakness` VARCHAR(25) NULL,
+  `resistance` VARCHAR(25) NULL,
+  `damage_value` INT NOT NULL DEFAULT 1,
+  `damage_type` VARCHAR(25) NULL,
+  `level` INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`boss_id`),
+  UNIQUE INDEX `boss_id_UNIQUE` (`boss_id` ASC) VISIBLE);
 
+ALTER TABLE `mobilerpg`.`location` 
+ADD INDEX `boss_id_idx` (`boss_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`location` 
+ADD CONSTRAINT `boss_id`
+  FOREIGN KEY (`boss_id`)
+  REFERENCES `mobilerpg`.`boss` (`boss_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
