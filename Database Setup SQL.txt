@@ -159,3 +159,24 @@ ADD CONSTRAINT `item_5`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+CREATE TABLE `mobilerpg`.`weapon` (
+  `weapon_id` INT NOT NULL,
+  `weapon_name` VARCHAR(15) NULL,
+  `damage_amount` INT NOT NULL DEFAULT 1,
+  `damage_type` VARCHAR(25) NULL,
+  `durability` INT NOT NULL DEFAULT 1,
+  `sell_value` DECIMAL(16,2) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`weapon_id`),
+  UNIQUE INDEX `weapon_id_UNIQUE` (`weapon_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD INDEX `weapon_id_idx` (`weapon_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD CONSTRAINT `weapon_id`
+  FOREIGN KEY (`weapon_id`)
+  REFERENCES `mobilerpg`.`weapon` (`weapon_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
