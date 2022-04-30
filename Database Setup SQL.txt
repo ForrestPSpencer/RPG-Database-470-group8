@@ -70,6 +70,12 @@ ADD CONSTRAINT `appearance_id`
   REFERENCES `mobilerpg`.`apperance` (`appearance_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+  
+ALTER TABLE `mobilerpg`.`player` 
+  ADD CHECK (`level` > 0),
+  ADD CONSTRAINT level_min_chk CHECK (`level` > 0),
+  ADD CHECK (`level` < 101),
+  ADD CONSTRAINT level_max_chk CHECK (`level` < 101)
 
 CREATE TABLE `mobilerpg`.`location` (
   `location_id` INT NOT NULL,
