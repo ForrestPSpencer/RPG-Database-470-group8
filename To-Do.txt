@@ -12,8 +12,9 @@ Create Scheme - Derrick
 -inventory DONE
 -boss DONE
 -enemy DONE
--shop
+-shop DONE
 -quest
+-npc
 -armor DONE
 -weapon DONE
 -item DONE

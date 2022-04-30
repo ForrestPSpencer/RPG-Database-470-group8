@@ -226,3 +226,20 @@ ADD CONSTRAINT `enemy_id`
   REFERENCES `mobilerpg`.`enemy` (`enemy_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+CREATE TABLE `mobilerpg`.`shop` (
+  `shop_id` INT NOT NULL,
+  `shop_name` VARCHAR(15) NULL,
+  `npcs_id` INT NULL,
+  PRIMARY KEY (`shop_id`),
+  UNIQUE INDEX `shop_id_UNIQUE` (`shop_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`location` 
+ADD INDEX `shop_id_idx` (`shop_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`location` 
+ADD CONSTRAINT `shop_id`
+  FOREIGN KEY (`shop_id`)
+  REFERENCES `mobilerpg`.`shop` (`shop_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
