@@ -1,1 +1,48 @@
 CREATE SCHEMA `mobilerpg` ;
+
+CREATE TABLE `mobilerpg`.`player` (
+  `player_id` INT NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(20) NULL,
+  `password` VARCHAR(25) NOT NULL,
+  `birthday` DATETIME NULL,
+  `level` INT NOT NULL DEFAULT 1,
+  `HP` FLOAT NOT NULL DEFAULT 100,
+  `alignment` VARCHAR(2) NOT NULL,
+  `gender` VARCHAR(1) NOT NULL DEFAULT 'F',
+  `appearance` VARCHAR(35) NOT NULL,
+  `inventory_id` INT NOT NULL,
+  PRIMARY KEY (`player_id`, `username`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `inventory_id_UNIQUE` (`inventory_id` ASC) VISIBLE)
+ENGINE = InnoDB
+ROW_FORMAT = DEFAULT;
+
+CREATE TABLE `mobilerpg`.`inventory` (
+  `inventory_id` INT NOT NULL,
+  `player_id` INT NOT NULL,
+  `weapon_id` INT NULL,
+  `armor_id` INT NULL,
+  `item_1` INT NULL,
+  `item_2` INT NULL,
+  `item_3` INT NULL,
+  `item_4` INT NULL,
+  `item_5` INT NULL,
+  PRIMARY KEY (`inventory_id`, `player_id`),
+  UNIQUE INDEX `inventory_id_UNIQUE` (`inventory_id` ASC) VISIBLE,
+  UNIQUE INDEX `player_id_UNIQUE` (`player_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`inventory` 
+ADD CONSTRAINT `player_id`
+  FOREIGN KEY (`player_id`)
+  REFERENCES `mobilerpg`.`player` (`player_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `mobilerpg`.`player` 
+ADD CONSTRAINT `inventory_id`
+  FOREIGN KEY (`inventory_id`)
+  REFERENCES `mobilerpg`.`inventory` (`inventory_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
