@@ -261,3 +261,21 @@ ADD CONSTRAINT `npcs_id`
   REFERENCES `mobilerpg`.`npcs` (`npcs_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+CREATE TABLE `mobilerpg`.`quest` (
+  `quest_id` INT NOT NULL,
+  `quest_name` VARCHAR(15) NULL,
+  `currency_value` INT NOT NULL DEFAULT 10,
+  `completion_condition` VARCHAR(35) NOT NULL,
+  PRIMARY KEY (`quest_id`),
+  UNIQUE INDEX `quest_id_UNIQUE` (`quest_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`npcs` 
+ADD INDEX `quest_id_idx` (`quest_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`npcs` 
+ADD CONSTRAINT `quest_id`
+  FOREIGN KEY (`quest_id`)
+  REFERENCES `mobilerpg`.`quest` (`quest_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
