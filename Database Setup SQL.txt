@@ -202,3 +202,27 @@ ADD CONSTRAINT `boss_id`
   REFERENCES `mobilerpg`.`boss` (`boss_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+CREATE TABLE `mobilerpg`.`enemy` (
+  `enemy_id` INT NOT NULL,
+  `enemy_name` VARCHAR(15) NULL,
+  `currency_value` INT NULL,
+  `HP` FLOAT NOT NULL DEFAULT 100,
+  `weakness` VARCHAR(25) NULL,
+  `resistance` VARCHAR(25) NULL,
+  `damage_value` INT NOT NULL DEFAULT 1,
+  `damage_type` VARCHAR(25) NULL,
+  `level` INT NOT NULL DEFAULT 1,
+  `enemycol` VARCHAR(45) NULL,
+  PRIMARY KEY (`enemy_id`),
+  UNIQUE INDEX `enemy_id_UNIQUE` (`enemy_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`location` 
+ADD INDEX `enemy_id_idx` (`enemy_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`location` 
+ADD CONSTRAINT `enemy_id`
+  FOREIGN KEY (`enemy_id`)
+  REFERENCES `mobilerpg`.`enemy` (`enemy_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
