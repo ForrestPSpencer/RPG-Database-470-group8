@@ -46,3 +46,26 @@ ADD CONSTRAINT `inventory_id`
   REFERENCES `mobilerpg`.`inventory` (`inventory_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+ALTER TABLE `mobilerpg`.`player` 
+CHANGE COLUMN `appearance` `appearance_id` INT NOT NULL ;
+
+CREATE TABLE `mobilerpg`.`apperance` (
+  `appearance_id` INT NOT NULL,
+  `headtype` INT NOT NULL,
+  `torsotype` INT NOT NULL,
+  `legtype` INT NOT NULL,
+  `skintone` INT NOT NULL,
+  `bodytype` INT NOT NULL,
+  PRIMARY KEY (`appearance_id`),
+  UNIQUE INDEX `appearance_id_UNIQUE` (`appearance_id` ASC) VISIBLE);
+
+ALTER TABLE `mobilerpg`.`player` 
+ADD INDEX `appearance_id_idx` (`appearance_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`player` 
+ADD CONSTRAINT `appearance_id`
+  FOREIGN KEY (`appearance_id`)
+  REFERENCES `mobilerpg`.`apperance` (`appearance_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

@@ -1,5 +1,13 @@
 Generate Data - Opp
+-armor names (leg,head torso
+-enemy names
+-weapon names
+-Quest names
+-boss names
+
 Create Scheme - Derrick
 Apply Constraints - Derrick 
+-appearance table
+
 Create Views - 
 Create Quearies - 
