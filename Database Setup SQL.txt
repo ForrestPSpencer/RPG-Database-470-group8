@@ -92,3 +92,13 @@ ADD CONSTRAINT `location_id`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+CREATE TABLE `mobilerpg`.`armor` (
+  `armor_id` INT NOT NULL,
+  `armor_name` VARCHAR(25) NULL,
+  `defense_value` INT NOT NULL,
+  `resistancetype` VARCHAR(45) NULL,
+  `weaknesstype` VARCHAR(45) NULL,
+  `durability` INT NOT NULL,
+  `sell_value` DECIMAL(16,2) NOT NULL,
+  PRIMARY KEY (`armor_id`),
+  UNIQUE INDEX `armor_id_UNIQUE` (`armor_id` ASC) VISIBLE);
