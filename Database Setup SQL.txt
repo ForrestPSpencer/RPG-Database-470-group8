@@ -69,3 +69,26 @@ ADD CONSTRAINT `appearance_id`
   REFERENCES `mobilerpg`.`apperance` (`appearance_id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+CREATE TABLE `mobilerpg`.`location` (
+  `location_id` INT NOT NULL,
+  `locationname` VARCHAR(45) NOT NULL,
+  `shop_id` INT NULL,
+  `enemy_id` INT NULL,
+  `boss_id` INT NULL,
+  `quest_id` INT NULL,
+  `deal` VARCHAR(50) NULL,
+  PRIMARY KEY (`location_id`),
+  UNIQUE INDEX `location_id_UNIQUE` (`location_id` ASC) 
+
+ALTER TABLE `mobilerpg`.`player` 
+ADD COLUMN `location_id` INT NOT NULL AFTER `inventory_id`,
+ADD INDEX `location_id_idx` (`location_id` ASC) VISIBLE;
+;
+ALTER TABLE `mobilerpg`.`player` 
+ADD CONSTRAINT `location_id`
+  FOREIGN KEY (`location_id`)
+  REFERENCES `mobilerpg`.`location` (`location_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
