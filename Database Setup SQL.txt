@@ -17,7 +17,9 @@ CREATE TABLE `mobilerpg`.`player` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `inventory_id_UNIQUE` (`inventory_id` ASC) VISIBLE,
   CONSTRAINT level_min_chk CHECK (`level` > 0), 
-  CONSTRAINT level_max_chk CHECK (`level` < 101))
+  CONSTRAINT level_max_chk CHECK (`level` < 101),
+  CONSTRAINT gender_chk CHECK (`gender` IN (`M`, `F`, `O`)),
+  CONSTRAINT alignment_chk CHECK (`alignment` IN (`L`, `D`)))
 ENGINE = InnoDB
 ROW_FORMAT = DEFAULT;
 
@@ -195,7 +197,8 @@ CREATE TABLE `mobilerpg`.`boss` (
   PRIMARY KEY (`boss_id`),
   UNIQUE INDEX `boss_id_UNIQUE` (`boss_id` ASC) VISIBLE,
   CONSTRAINT level_min_chk CHECK (`level` > 0), 
-  CONSTRAINT level_max_chk CHECK (`level` < 101));
+  CONSTRAINT level_max_chk CHECK (`level` < 101),
+  CONSTRAINT damage_max_chk CHECK (`damage_value` > 0));
 
 ALTER TABLE `mobilerpg`.`location` 
 ADD INDEX `boss_id_idx` (`boss_id` ASC) VISIBLE;
@@ -221,7 +224,8 @@ CREATE TABLE `mobilerpg`.`enemy` (
   PRIMARY KEY (`enemy_id`),
   UNIQUE INDEX `enemy_id_UNIQUE` (`enemy_id` ASC) VISIBLE,
   CONSTRAINT level_min_chk CHECK (`level` > 0), 
-  CONSTRAINT level_max_chk CHECK (`level` < 101));
+  CONSTRAINT level_max_chk CHECK (`level` < 101),
+  CONSTRAINT damage_max_chk CHECK (`damage_value` > 0));
 
 ALTER TABLE `mobilerpg`.`location` 
 ADD INDEX `enemy_id_idx` (`enemy_id` ASC) VISIBLE;
